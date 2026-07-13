@@ -1,0 +1,169 @@
+<!-- ============ CABECERA ============ -->
+<section class="subheroe">
+  <div class="contenedor">
+    <span class="etiqueta etiqueta--celeste">Contactos</span>
+    <h1>Estamos para ayudarte</h1>
+    <p>
+      ¿Tienes dudas sobre préstamos, reservas o el uso de la plataforma? Escríbenos o
+      visítanos en el campus de la UTEQ.
+    </p>
+  </div>
+</section>
+
+<!-- ============ MEDIOS DE CONTACTO ============ -->
+<section class="seccion">
+  <div class="contenedor">
+    <div class="medios">
+      <article class="tarjeta">
+        <div class="tarjeta__icono">
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"
+            stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
+            <path d="M21 10c0 7-9 13-9 13s-9-6-9-13a9 9 0 0 1 18 0z" />
+            <circle cx="12" cy="10" r="3" />
+          </svg>
+        </div>
+        <h3>Visítanos</h3>
+        <p>
+          Biblioteca Central UTEQ<br />
+          Av. Pie de la Cuesta 2501, Unidad Nacional,<br />
+          76148 Santiago de Querétaro, Qro.
+        </p>
+      </article>
+
+      <article class="tarjeta">
+        <div class="tarjeta__icono">
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"
+            stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
+            <path d="M22 16.92v3a2 2 0 0 1-2.18 2 19.79 19.79 0 0 1-8.63-3.07 19.5 19.5 0 0 1-6-6 19.79 19.79 0 0 1-3.07-8.67A2 2 0 0 1 4.11 2h3a2 2 0 0 1 2 1.72 12.84 12.84 0 0 0 .7 2.81 2 2 0 0 1-.45 2.11L8.09 9.91a16 16 0 0 0 6 6l1.27-1.27a2 2 0 0 1 2.11-.45 12.84 12.84 0 0 0 2.81.7A2 2 0 0 1 22 16.92z" />
+          </svg>
+        </div>
+        <h3>Llámanos</h3>
+        <p>
+          (442) 209 6100<br />
+          Ext. 6120 — Mostrador de préstamos<br />
+          Ext. 6125 — Recursos digitales
+        </p>
+      </article>
+
+      <article class="tarjeta">
+        <div class="tarjeta__icono">
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"
+            stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
+            <path d="M4 4h16c1.1 0 2 .9 2 2v12c0 1.1-.9 2-2 2H4c-1.1 0-2-.9-2-2V6c0-1.1.9-2 2-2z" />
+            <path d="M22 6l-10 7L2 6" />
+          </svg>
+        </div>
+        <h3>Escríbenos</h3>
+        <p>
+          biblioteca&#64;uteq.edu.mx<br />
+          prestamos&#64;uteq.edu.mx<br />
+          Respondemos en un máximo de 48 horas hábiles.
+        </p>
+      </article>
+    </div>
+  </div>
+</section>
+
+<!-- ============ FORMULARIO + HORARIOS ============ -->
+<section class="seccion seccion--crema">
+  <div class="contenedor contacto">
+    <div class="contacto__formulario">
+      <span class="etiqueta">Envíanos un mensaje</span>
+      <h2>Cuéntanos en qué podemos apoyarte</h2>
+
+      @if (enviado()) {
+        <div class="alerta alerta--exito" role="status">
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"
+            stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
+            <path d="M22 11.08V12a10 10 0 1 1-5.93-9.14" />
+            <path d="M22 4L12 14.01l-3-3" />
+          </svg>
+          <span>¡Gracias! Tu mensaje fue enviado. Te responderemos muy pronto.</span>
+        </div>
+      }
+
+      @if (error()) {
+        <div class="alerta alerta--error" role="alert">
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"
+            stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
+            <circle cx="12" cy="12" r="10" />
+            <path d="M12 8v4M12 16h.01" />
+          </svg>
+          <span>{{ error() }}</span>
+        </div>
+      }
+
+      <form (ngSubmit)="enviarMensaje()">
+        <div class="contacto__fila">
+          <div class="campo">
+            <label for="nombre">Nombre completo</label>
+            <input id="nombre" name="nombre" type="text" placeholder="Ej. María López"
+              [(ngModel)]="nombre" autocomplete="name" />
+          </div>
+          <div class="campo">
+            <label for="correo">Correo electrónico</label>
+            <input id="correo" name="correo" type="email" placeholder="tucorreo@uteq.edu.mx"
+              [(ngModel)]="correo" autocomplete="email" />
+          </div>
+        </div>
+
+        <div class="campo">
+          <label for="asunto">Asunto</label>
+          <select id="asunto" name="asunto" [(ngModel)]="asunto">
+            <option>Información general</option>
+            <option>Préstamos y devoluciones</option>
+            <option>Reserva de salas</option>
+            <option>Recursos digitales</option>
+            <option>Sugerencias de material</option>
+          </select>
+        </div>
+
+        <div class="campo">
+          <label for="mensaje">Mensaje</label>
+          <textarea id="mensaje" name="mensaje" rows="5"
+            placeholder="Escribe aquí tu mensaje…" [(ngModel)]="mensaje"></textarea>
+        </div>
+
+        <button type="submit" class="boton boton--primario">
+          Enviar mensaje
+          <svg viewBox="0 0 24 24" width="18" height="18" fill="none" stroke="currentColor"
+            stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
+            <path d="M22 2L11 13" />
+            <path d="M22 2l-7 20-4-9-9-4 20-7z" />
+          </svg>
+        </button>
+      </form>
+    </div>
+
+    <aside class="contacto__lateral">
+      <div class="horario">
+        <h3>
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"
+            stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
+            <circle cx="12" cy="12" r="10" />
+            <path d="M12 6v6l4 2" />
+          </svg>
+          Horarios de atención
+        </h3>
+        <ul>
+          @for (item of horarios; track item.dia) {
+            <li>
+              <span>{{ item.dia }}</span>
+              <strong>{{ item.horario }}</strong>
+            </li>
+          }
+        </ul>
+      </div>
+
+      <div class="mapa" aria-label="Ubicación de la Biblioteca UTEQ en el campus">
+        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6"
+          stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
+          <path d="M21 10c0 7-9 13-9 13s-9-6-9-13a9 9 0 0 1 18 0z" />
+          <circle cx="12" cy="10" r="3" />
+        </svg>
+        <strong>Campus UTEQ</strong>
+        <p>Edificio de Biblioteca, planta baja, junto al Centro de Idiomas.</p>
+      </div>
+    </aside>
+  </div>
+</section>

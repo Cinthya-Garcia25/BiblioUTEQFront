@@ -1,0 +1,33 @@
+.opciones {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 1rem;
+  flex-wrap: wrap;
+  margin-bottom: 1.4rem;
+  font-size: 0.9rem;
+}
+
+.opciones__recordar {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.5rem;
+  cursor: pointer;
+  color: var(--tinta-600);
+}
+
+.opciones__recordar input {
+  width: 17px;
+  height: 17px;
+  accent-color: var(--azul-700);
+  cursor: pointer;
+}
+
+.opciones__olvide {
+  color: var(--azul-700);
+  font-weight: 600;
+}
+
+.opciones__olvide:hover {
+  text-decoration: underline;
+}

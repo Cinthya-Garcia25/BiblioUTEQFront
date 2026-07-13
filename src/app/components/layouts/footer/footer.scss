@@ -1,0 +1,126 @@
+.pie {
+  background: linear-gradient(170deg, var(--azul-900), var(--azul-950));
+  color: rgba(255, 255, 255, 0.78);
+  font-size: 0.94rem;
+}
+
+.pie__superior {
+  display: grid;
+  grid-template-columns: 1.4fr 1fr 1fr 1.4fr;
+  gap: 2.5rem;
+  padding-block: 3.5rem 2.5rem;
+}
+
+/* ---------- Marca ---------- */
+.pie__logo {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.65rem;
+  margin-bottom: 1rem;
+}
+
+.pie__logo span {
+  width: 40px;
+  height: 40px;
+  display: grid;
+  place-items: center;
+  border-radius: 10px;
+  background: rgba(255, 255, 255, 0.08);
+  color: var(--celeste-500);
+}
+
+.pie__logo svg {
+  width: 22px;
+  height: 22px;
+}
+
+.pie__logo strong {
+  font-family: var(--fuente-titulos);
+  font-size: 1.05rem;
+  color: var(--blanco);
+}
+
+.pie__marca p {
+  max-width: 34ch;
+}
+
+/* ---------- Columnas ---------- */
+.pie__columna h4 {
+  color: var(--blanco);
+  font-size: 0.9rem;
+  letter-spacing: 0.08em;
+  text-transform: uppercase;
+  margin-bottom: 1.1rem;
+}
+
+.pie__columna ul {
+  display: flex;
+  flex-direction: column;
+  gap: 0.65rem;
+}
+
+.pie__columna a {
+  transition: color var(--transicion), padding-left var(--transicion);
+}
+
+.pie__columna a:hover {
+  color: var(--celeste-500);
+  padding-left: 4px;
+}
+
+.pie__contacto li {
+  display: flex;
+  gap: 0.65rem;
+  align-items: flex-start;
+}
+
+.pie__contacto svg {
+  width: 18px;
+  height: 18px;
+  flex-shrink: 0;
+  margin-top: 4px;
+  color: var(--celeste-500);
+}
+
+/* ---------- Barra inferior ---------- */
+.pie__inferior {
+  border-top: 1px solid rgba(255, 255, 255, 0.12);
+  padding-block: 1.2rem;
+  font-size: 0.85rem;
+}
+
+.pie__inferior-interior {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 1rem;
+  flex-wrap: wrap;
+}
+
+.pie__inferior a {
+  color: var(--celeste-500);
+  font-weight: 600;
+}
+
+.pie__inferior a:hover {
+  text-decoration: underline;
+}
+
+/* ---------- Responsivo ---------- */
+@media (max-width: 960px) {
+  .pie__superior {
+    grid-template-columns: 1fr 1fr;
+  }
+}
+
+@media (max-width: 560px) {
+  .pie__superior {
+    grid-template-columns: 1fr;
+    gap: 2rem;
+  }
+
+  .pie__inferior-interior {
+    justify-content: center;
+    text-align: center;
+  }
+}

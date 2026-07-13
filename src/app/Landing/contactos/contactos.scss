@@ -1,0 +1,142 @@
+/* ============ MEDIOS DE CONTACTO ============ */
+.medios {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 1.5rem;
+}
+
+.medios .tarjeta p {
+  line-height: 1.7;
+}
+
+/* ============ FORMULARIO + LATERAL ============ */
+.contacto {
+  display: grid;
+  grid-template-columns: 1.5fr 1fr;
+  gap: 2.5rem;
+  align-items: start;
+}
+
+.contacto__formulario {
+  background: var(--blanco);
+  border: 1px solid var(--borde);
+  border-radius: var(--radio-lg);
+  padding: clamp(1.75rem, 4vw, 2.5rem);
+  box-shadow: var(--sombra-sm);
+}
+
+.contacto__formulario h2 {
+  font-size: clamp(1.35rem, 2.6vw, 1.7rem);
+  margin-block: 0.9rem 1.5rem;
+}
+
+.contacto__fila {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 1rem;
+}
+
+/* ============ LATERAL ============ */
+.contacto__lateral {
+  display: flex;
+  flex-direction: column;
+  gap: 1.5rem;
+}
+
+.horario {
+  background: var(--blanco);
+  border: 1px solid var(--borde);
+  border-radius: var(--radio-md);
+  padding: 1.75rem;
+  box-shadow: var(--sombra-sm);
+}
+
+.horario h3 {
+  display: flex;
+  align-items: center;
+  gap: 0.6rem;
+  font-size: 1.05rem;
+  margin-bottom: 1.1rem;
+}
+
+.horario h3 svg {
+  width: 22px;
+  height: 22px;
+  color: var(--azul-600);
+}
+
+.horario ul {
+  display: flex;
+  flex-direction: column;
+}
+
+.horario li {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 1rem;
+  padding-block: 0.7rem;
+  font-size: 0.93rem;
+  border-bottom: 1px dashed var(--borde);
+}
+
+.horario li:last-child {
+  border-bottom: none;
+}
+
+.horario li span {
+  color: var(--tinta-600);
+}
+
+.horario li strong {
+  color: var(--azul-700);
+}
+
+.mapa {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  text-align: center;
+  gap: 0.4rem;
+  padding: 2rem 1.5rem;
+  border-radius: var(--radio-md);
+  color: var(--blanco);
+  background:
+    radial-gradient(400px 200px at 90% 0%, rgba(56, 189, 248, 0.25), transparent 60%),
+    linear-gradient(150deg, var(--azul-700), var(--azul-950));
+  box-shadow: var(--sombra-md);
+}
+
+.mapa svg {
+  width: 42px;
+  height: 42px;
+  color: var(--celeste-500);
+  margin-bottom: 0.4rem;
+}
+
+.mapa strong {
+  font-family: var(--fuente-titulos);
+  font-size: 1.1rem;
+}
+
+.mapa p {
+  color: rgba(255, 255, 255, 0.8);
+  font-size: 0.9rem;
+}
+
+/* ============ RESPONSIVO ============ */
+@media (max-width: 960px) {
+  .medios {
+    grid-template-columns: 1fr;
+  }
+
+  .contacto {
+    grid-template-columns: 1fr;
+  }
+}
+
+@media (max-width: 560px) {
+  .contacto__fila {
+    grid-template-columns: 1fr;
+  }
+}

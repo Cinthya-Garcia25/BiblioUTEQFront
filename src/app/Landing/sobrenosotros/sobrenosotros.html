@@ -1,0 +1,107 @@
+<!-- ============ CABECERA ============ -->
+<section class="subheroe">
+  <div class="contenedor">
+    <span class="etiqueta etiqueta--celeste">Sobre Nosotros</span>
+    <h1>La biblioteca que impulsa a la comunidad UTEQ</h1>
+    <p>
+      Más de tres décadas acompañando la formación de tecnólogos y profesionistas en Querétaro,
+      hoy con una plataforma digital a la altura de nuestra comunidad.
+    </p>
+  </div>
+</section>
+
+<!-- ============ MISIÓN Y VISIÓN ============ -->
+<section class="seccion">
+  <div class="contenedor">
+    <div class="mision">
+      <article class="mision__tarjeta">
+        <span class="etiqueta">Misión</span>
+        <h2>Democratizar el acceso al conocimiento</h2>
+        <p>
+          Proporcionar a estudiantes, docentes y personal de la Universidad Tecnológica de
+          Querétaro los recursos de información necesarios para su desarrollo académico,
+          profesional y personal, mediante servicios bibliotecarios de calidad, oportunos
+          y accesibles.
+        </p>
+      </article>
+      <article class="mision__tarjeta mision__tarjeta--oscura">
+        <span class="etiqueta etiqueta--celeste">Visión</span>
+        <h2>Ser el corazón académico del campus</h2>
+        <p>
+          Consolidarnos como un centro de recursos de aprendizaje referente en el sistema de
+          universidades tecnológicas, integrando colecciones físicas y digitales con
+          tecnología que acompañe a cada estudiante durante toda su trayectoria.
+        </p>
+      </article>
+    </div>
+  </div>
+</section>
+
+<!-- ============ VALORES ============ -->
+<section class="seccion seccion--crema">
+  <div class="contenedor">
+    <header class="seccion__cabecera">
+      <span class="etiqueta">Nuestros valores</span>
+      <h2>Lo que guía nuestro trabajo diario</h2>
+    </header>
+    <div class="valores">
+      @for (valor of valores; track valor.titulo) {
+        <article class="tarjeta">
+          <div class="tarjeta__icono">
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"
+              stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
+              <path d="M20 6L9 17l-5-5" />
+            </svg>
+          </div>
+          <h3>{{ valor.titulo }}</h3>
+          <p>{{ valor.descripcion }}</p>
+        </article>
+      }
+    </div>
+  </div>
+</section>
+
+<!-- ============ HISTORIA ============ -->
+<section class="seccion">
+  <div class="contenedor">
+    <header class="seccion__cabecera">
+      <span class="etiqueta">Nuestra historia</span>
+      <h2>Un camino de crecimiento constante</h2>
+    </header>
+    <ol class="historia">
+      @for (hito of lineaDeTiempo; track hito.anio) {
+        <li class="historia__hito">
+          <span class="historia__anio">{{ hito.anio }}</span>
+          <div class="historia__contenido">
+            <h3>{{ hito.titulo }}</h3>
+            <p>{{ hito.descripcion }}</p>
+          </div>
+        </li>
+      }
+    </ol>
+  </div>
+</section>
+
+<!-- ============ EQUIPO ============ -->
+<section class="seccion seccion--crema">
+  <div class="contenedor">
+    <header class="seccion__cabecera">
+      <span class="etiqueta">Nuestro equipo</span>
+      <h2>Personas al servicio de tu aprendizaje</h2>
+    </header>
+    <div class="equipo">
+      @for (persona of equipo; track persona.nombre) {
+        <article class="equipo__tarjeta">
+          <span class="equipo__avatar">{{ persona.iniciales }}</span>
+          <h3>{{ persona.nombre }}</h3>
+          <p>{{ persona.puesto }}</p>
+        </article>
+      }
+    </div>
+
+    <div class="equipo__cta">
+      <p>¿Quieres conocernos en persona? Visítanos en el campus o escríbenos.</p>
+      <a routerLink="/contactos" class="boton boton--primario">Ir a Contactos</a>
+    </div>
+  </div>
+</section>

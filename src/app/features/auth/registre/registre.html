@@ -1,0 +1,159 @@
+<div class="auth">
+  <!-- Panel de marca -->
+  <aside class="auth__panel">
+    <a routerLink="/" class="auth__marca">
+      <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8"
+        stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
+        <path d="M4 19.5A2.5 2.5 0 0 1 6.5 17H20" />
+        <path d="M6.5 2H20v20H6.5A2.5 2.5 0 0 1 4 19.5v-15A2.5 2.5 0 0 1 6.5 2z" />
+        <path d="M9 7h6M9 11h4" />
+      </svg>
+      Biblioteca UTEQ
+    </a>
+
+    <div class="auth__mensaje">
+      <h2>Crea tu cuenta y accede a todo el acervo</h2>
+      <p>
+        Más de 12,500 títulos, salas de estudio y recursos digitales te esperan. Solo
+        necesitas tu matrícula y tu correo institucional.
+      </p>
+    </div>
+
+    <blockquote class="auth__cita">
+      “Hoy un lector, mañana un líder.” — Margaret Fuller
+    </blockquote>
+  </aside>
+
+  <!-- Formulario -->
+  <div class="auth__contenido">
+    <div class="auth__caja aparecer">
+      @if (registrado()) {
+        <!-- Estado de éxito -->
+        <div class="exito">
+          <span class="exito__icono" aria-hidden="true">
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2"
+              stroke-linecap="round" stroke-linejoin="round">
+              <path d="M22 11.08V12a10 10 0 1 1-5.93-9.14" />
+              <path d="M22 4L12 14.01l-3-3" />
+            </svg>
+          </span>
+          <h1>¡Cuenta creada con éxito!</h1>
+          <p>
+            Tu registro quedó completo. Ya puedes iniciar sesión con tu correo institucional
+            y tu contraseña.
+          </p>
+          <a routerLink="/login" class="boton boton--primario boton--bloque">Ir a Iniciar Sesión</a>
+        </div>
+      } @else {
+        <a routerLink="/login" class="auth__volver">
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2"
+            stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
+            <path d="M19 12H5M12 19l-7-7 7-7" />
+          </svg>
+          Volver a Iniciar Sesión
+        </a>
+
+        <h1>Crear Cuenta</h1>
+        <p class="auth__sub">Regístrate con tus datos institucionales de la UTEQ.</p>
+
+        @if (error()) {
+          <div class="alerta alerta--error" role="alert">
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"
+              stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
+              <circle cx="12" cy="12" r="10" />
+              <path d="M12 8v4M12 16h.01" />
+            </svg>
+            <span>{{ error() }}</span>
+          </div>
+        }
+
+        <form (ngSubmit)="registrarse()">
+          <div class="campo">
+            <label for="nombre">Nombre completo</label>
+            <input id="nombre" name="nombre" type="text" placeholder="Ej. María Fernanda López García"
+              [(ngModel)]="nombre" autocomplete="name" />
+          </div>
+
+          <div class="registro__fila">
+            <div class="campo">
+              <label for="matricula">Matrícula</label>
+              <input id="matricula" name="matricula" type="text" placeholder="Ej. 2026123456"
+                [(ngModel)]="matricula" />
+            </div>
+            <div class="campo">
+              <label for="carrera">Carrera o área</label>
+              <select id="carrera" name="carrera" [(ngModel)]="carrera">
+                <option value="" disabled selected>Selecciona una opción</option>
+                @for (opcion of carreras; track opcion) {
+                  <option [value]="opcion">{{ opcion }}</option>
+                }
+              </select>
+            </div>
+          </div>
+
+          <div class="campo">
+            <label for="correo">Correo institucional</label>
+            <input id="correo" name="correo" type="email" placeholder="tucorreo@uteq.edu.mx"
+              [(ngModel)]="correo" autocomplete="email" />
+          </div>
+
+          <div class="registro__fila">
+            <div class="campo">
+              <label for="contrasena">Contraseña</label>
+              <div class="campo__control campo__control--simple">
+                <input id="contrasena" name="contrasena"
+                  [type]="verContrasena() ? 'text' : 'password'" placeholder="Mínimo 6 caracteres"
+                  [(ngModel)]="contrasena" autocomplete="new-password" />
+                <button type="button" class="campo__ver" (click)="alternarContrasena()"
+                  [attr.aria-label]="verContrasena() ? 'Ocultar contraseña' : 'Mostrar contraseña'">
+                  @if (verContrasena()) {
+                    <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"
+                      stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
+                      <path d="M17.94 17.94A10.07 10.07 0 0 1 12 20c-7 0-11-8-11-8a18.45 18.45 0 0 1 5.06-5.94M9.9 4.24A9.12 9.12 0 0 1 12 4c7 0 11 8 11 8a18.5 18.5 0 0 1-2.16 3.19m-6.72-1.07a3 3 0 1 1-4.24-4.24" />
+                      <path d="M1 1l22 22" />
+                    </svg>
+                  } @else {
+                    <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"
+                      stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
+                      <path d="M1 12s4-8 11-8 11 8 11 8-4 8-11 8-11-8-11-8z" />
+                      <circle cx="12" cy="12" r="3" />
+                    </svg>
+                  }
+                </button>
+              </div>
+            </div>
+            <div class="campo">
+              <label for="confirmacion">Confirmar contraseña</label>
+              <input id="confirmacion" name="confirmacion"
+                [type]="verContrasena() ? 'text' : 'password'" placeholder="Repite tu contraseña"
+                [(ngModel)]="confirmacion" autocomplete="new-password" />
+            </div>
+          </div>
+
+          <label class="registro__politicas">
+            <input type="checkbox" name="aceptaPoliticas" [(ngModel)]="aceptaPoliticas" />
+            <span>
+              He leído y acepto las
+              <a routerLink="/politicas" target="_blank" rel="noopener">Políticas de Uso</a>
+              de la Biblioteca UTEQ.
+            </span>
+          </label>
+
+          <button type="submit" class="boton boton--primario boton--bloque" [disabled]="cargando()">
+            @if (cargando()) {
+              <span class="spinner" aria-hidden="true"></span>
+              Creando tu cuenta…
+            } @else {
+              Crear Cuenta
+            }
+          </button>
+        </form>
+
+        <p class="auth__pie">
+          ¿Ya tienes una cuenta?
+          <a routerLink="/login">Inicia sesión</a>
+        </p>
+      }
+    </div>
+  </div>
+</div>

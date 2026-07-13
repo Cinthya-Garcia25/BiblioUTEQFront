@@ -1,0 +1,103 @@
+.politicas {
+  max-width: 780px;
+}
+
+.politicas__introduccion {
+  font-size: 1.08rem;
+  color: var(--tinta-700);
+  padding: 1.4rem 1.6rem;
+  background: var(--azul-50);
+  border-left: 4px solid var(--azul-600);
+  border-radius: 0 var(--radio-sm) var(--radio-sm) 0;
+  margin-bottom: 2.5rem;
+}
+
+.politicas__seccion {
+  margin-bottom: 2.25rem;
+}
+
+.politicas__seccion h2 {
+  display: flex;
+  align-items: center;
+  gap: 0.8rem;
+  font-size: 1.3rem;
+  margin-bottom: 0.9rem;
+}
+
+.politicas__seccion h2 span {
+  flex-shrink: 0;
+  width: 38px;
+  height: 38px;
+  display: grid;
+  place-items: center;
+  border-radius: 10px;
+  font-size: 1rem;
+  color: var(--blanco);
+  background: linear-gradient(150deg, var(--azul-600), var(--azul-900));
+}
+
+.politicas__seccion p {
+  color: var(--tinta-600);
+  margin-bottom: 0.8rem;
+}
+
+.politicas__seccion ul {
+  display: flex;
+  flex-direction: column;
+  gap: 0.55rem;
+  padding-left: 0.4rem;
+}
+
+.politicas__seccion li {
+  position: relative;
+  padding-left: 1.6rem;
+  color: var(--tinta-600);
+}
+
+.politicas__seccion li::before {
+  content: '';
+  position: absolute;
+  left: 0;
+  top: 0.55em;
+  width: 8px;
+  height: 8px;
+  border-radius: 50%;
+  background: var(--celeste-500);
+}
+
+/* ---------- Nota final ---------- */
+.politicas__nota {
+  display: flex;
+  gap: 0.9rem;
+  align-items: flex-start;
+  padding: 1.3rem 1.5rem;
+  border: 1px solid var(--borde);
+  border-radius: var(--radio-md);
+  background: var(--crema);
+  margin-block: 2.5rem 2rem;
+}
+
+.politicas__nota svg {
+  width: 22px;
+  height: 22px;
+  flex-shrink: 0;
+  margin-top: 3px;
+  color: var(--azul-600);
+}
+
+.politicas__nota p {
+  color: var(--tinta-600);
+  font-size: 0.95rem;
+}
+
+.politicas__nota a {
+  color: var(--azul-700);
+  font-weight: 700;
+  text-decoration: underline;
+}
+
+.politicas__acciones {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 0.9rem;
+}

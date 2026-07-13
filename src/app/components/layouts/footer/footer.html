@@ -1,0 +1,77 @@
+<footer class="pie">
+  <div class="contenedor pie__superior">
+    <div class="pie__marca">
+      <a routerLink="/" class="pie__logo" aria-label="Biblioteca UTEQ — Inicio">
+        <span aria-hidden="true">
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8"
+            stroke-linecap="round" stroke-linejoin="round">
+            <path d="M4 19.5A2.5 2.5 0 0 1 6.5 17H20" />
+            <path d="M6.5 2H20v20H6.5A2.5 2.5 0 0 1 4 19.5v-15A2.5 2.5 0 0 1 6.5 2z" />
+            <path d="M9 7h6M9 11h4" />
+          </svg>
+        </span>
+        <strong>Biblioteca UTEQ</strong>
+      </a>
+      <p>
+        Plataforma de gestión de la Biblioteca de la Universidad Tecnológica de Querétaro.
+        Conocimiento al alcance de toda la comunidad universitaria.
+      </p>
+    </div>
+
+    <nav class="pie__columna" aria-label="Navegación del pie de página">
+      <h4>Navegación</h4>
+      <ul>
+        <li><a routerLink="/">Inicio</a></li>
+        <li><a routerLink="/sobre-nosotros">Sobre Nosotros</a></li>
+        <li><a routerLink="/contactos">Contactos</a></li>
+        <li><a routerLink="/login">Iniciar Sesión</a></li>
+      </ul>
+    </nav>
+
+    <nav class="pie__columna" aria-label="Recursos">
+      <h4>Recursos</h4>
+      <ul>
+        <li><a routerLink="/politicas">Políticas de Uso</a></li>
+        <li><a routerLink="/registro">Crear una Cuenta</a></li>
+        <li><a routerLink="/sobre-nosotros">Misión y Visión</a></li>
+        <li><a routerLink="/contactos">Horarios de Atención</a></li>
+      </ul>
+    </nav>
+
+    <div class="pie__columna">
+      <h4>Contacto</h4>
+      <ul class="pie__contacto">
+        <li>
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"
+            stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
+            <path d="M21 10c0 7-9 13-9 13s-9-6-9-13a9 9 0 0 1 18 0z" />
+            <circle cx="12" cy="10" r="3" />
+          </svg>
+          <span>Av. Pie de la Cuesta 2501, Unidad Nacional, 76148 Santiago de Querétaro, Qro.</span>
+        </li>
+        <li>
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"
+            stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
+            <path d="M22 16.92v3a2 2 0 0 1-2.18 2 19.79 19.79 0 0 1-8.63-3.07 19.5 19.5 0 0 1-6-6 19.79 19.79 0 0 1-3.07-8.67A2 2 0 0 1 4.11 2h3a2 2 0 0 1 2 1.72 12.84 12.84 0 0 0 .7 2.81 2 2 0 0 1-.45 2.11L8.09 9.91a16 16 0 0 0 6 6l1.27-1.27a2 2 0 0 1 2.11-.45 12.84 12.84 0 0 0 2.81.7A2 2 0 0 1 22 16.92z" />
+          </svg>
+          <span>(442) 209 6100</span>
+        </li>
+        <li>
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"
+            stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
+            <path d="M4 4h16c1.1 0 2 .9 2 2v12c0 1.1-.9 2-2 2H4c-1.1 0-2-.9-2-2V6c0-1.1.9-2 2-2z" />
+            <path d="M22 6l-10 7L2 6" />
+          </svg>
+          <span>biblioteca&#64;uteq.edu.mx</span>
+        </li>
+      </ul>
+    </div>
+  </div>
+
+  <div class="pie__inferior">
+    <div class="contenedor pie__inferior-interior">
+      <p>© {{ anioActual }} Biblioteca UTEQ · Universidad Tecnológica de Querétaro. Todos los derechos reservados.</p>
+      <a routerLink="/politicas">Políticas de Uso</a>
+    </div>
+  </div>
+</footer>

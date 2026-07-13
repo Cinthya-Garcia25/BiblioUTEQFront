@@ -1,0 +1,623 @@
+/* ============================================================
+   Biblioteca UTEQ · Sistema de diseño global
+   ============================================================ */
+
+:root {
+  /* Marca — azul institucional UTEQ */
+  --azul-950: #061027;
+  --azul-900: #0b1d4d;
+  --azul-800: #122a63;
+  --azul-700: #1e40af;
+  --azul-600: #2563eb;
+  --azul-500: #3b82f6;
+  --azul-100: #dbeafe;
+  --azul-50: #eff6ff;
+
+  /* Acento celeste */
+  --celeste-600: #0284c7;
+  --celeste-500: #38bdf8;
+  --celeste-100: #e0f2fe;
+
+  /* Neutros */
+  --tinta-900: #101828;
+  --tinta-700: #344054;
+  --tinta-600: #475467;
+  --tinta-400: #98a2b3;
+  --borde: #e4e7ec;
+  --crema: #f5f7fc;
+  --blanco: #ffffff;
+
+  /* Feedback */
+  --rojo-600: #d92d20;
+  --rojo-50: #fef3f2;
+
+  /* Tipografía */
+  --fuente-titulos: 'Sora', 'Segoe UI', sans-serif;
+  --fuente-texto: 'Inter', 'Segoe UI', sans-serif;
+
+  /* Forma y sombra */
+  --radio-sm: 8px;
+  --radio-md: 14px;
+  --radio-lg: 22px;
+  --sombra-sm: 0 1px 3px rgba(16, 24, 40, 0.08);
+  --sombra-md: 0 8px 24px rgba(16, 24, 40, 0.1);
+  --sombra-lg: 0 20px 48px rgba(10, 26, 68, 0.16);
+
+  --alto-header: 76px;
+  --transicion: 180ms ease;
+}
+
+/* ---------- Reset ---------- */
+*,
+*::before,
+*::after {
+  box-sizing: border-box;
+  margin: 0;
+  padding: 0;
+}
+
+html {
+  scroll-behavior: smooth;
+  -webkit-text-size-adjust: 100%;
+}
+
+body {
+  font-family: var(--fuente-texto);
+  font-size: 1rem;
+  line-height: 1.6;
+  color: var(--tinta-700);
+  background: var(--blanco);
+  -webkit-font-smoothing: antialiased;
+  min-height: 100dvh;
+}
+
+img,
+svg {
+  display: block;
+  max-width: 100%;
+}
+
+a {
+  color: inherit;
+  text-decoration: none;
+}
+
+ul,
+ol {
+  list-style: none;
+}
+
+button {
+  font: inherit;
+  border: none;
+  background: none;
+  cursor: pointer;
+}
+
+input,
+select,
+textarea {
+  font: inherit;
+  color: inherit;
+}
+
+h1, h2, h3, h4 {
+  font-family: var(--fuente-titulos);
+  color: var(--tinta-900);
+  line-height: 1.2;
+  text-wrap: balance;
+}
+
+:focus-visible {
+  outline: 3px solid color-mix(in srgb, var(--azul-500) 55%, transparent);
+  outline-offset: 2px;
+  border-radius: 4px;
+}
+
+::selection {
+  background: var(--azul-700);
+  color: var(--blanco);
+}
+
+/* ---------- Contenedor ---------- */
+.contenedor {
+  width: min(1160px, 100% - 2.5rem);
+  margin-inline: auto;
+}
+
+/* ---------- Secciones ---------- */
+.seccion {
+  padding-block: clamp(3.5rem, 8vw, 6rem);
+}
+
+.seccion--crema {
+  background: var(--crema);
+}
+
+.seccion__cabecera {
+  max-width: 640px;
+  margin-inline: auto;
+  text-align: center;
+  margin-bottom: clamp(2.25rem, 5vw, 3.5rem);
+}
+
+.seccion__cabecera h2 {
+  font-size: clamp(1.65rem, 3.6vw, 2.35rem);
+  margin-block: 0.75rem 0.9rem;
+}
+
+.seccion__cabecera p {
+  color: var(--tinta-600);
+  font-size: 1.05rem;
+}
+
+/* ---------- Etiqueta / badge ---------- */
+.etiqueta {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.45rem;
+  padding: 0.35rem 0.95rem;
+  border-radius: 999px;
+  background: var(--azul-100);
+  color: var(--azul-700);
+  font-size: 0.8rem;
+  font-weight: 700;
+  letter-spacing: 0.06em;
+  text-transform: uppercase;
+}
+
+.etiqueta--celeste {
+  background: var(--celeste-100);
+  color: var(--celeste-600);
+}
+
+/* ---------- Botones ---------- */
+.boton {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  gap: 0.55rem;
+  padding: 0.8rem 1.65rem;
+  border-radius: 999px;
+  font-weight: 600;
+  font-size: 0.975rem;
+  line-height: 1;
+  white-space: nowrap;
+  transition: transform var(--transicion), box-shadow var(--transicion),
+    background var(--transicion), color var(--transicion);
+}
+
+.boton:active {
+  transform: translateY(1px) scale(0.99);
+}
+
+.boton--primario {
+  background: var(--azul-700);
+  color: var(--blanco);
+  box-shadow: 0 6px 18px rgba(30, 64, 175, 0.32);
+}
+
+.boton--primario:hover {
+  background: var(--azul-600);
+  transform: translateY(-2px);
+  box-shadow: 0 10px 24px rgba(30, 64, 175, 0.38);
+}
+
+.boton--celeste {
+  background: var(--celeste-500);
+  color: var(--azul-950);
+  box-shadow: 0 6px 18px rgba(56, 189, 248, 0.35);
+}
+
+.boton--celeste:hover {
+  background: #7dd3fc;
+  transform: translateY(-2px);
+}
+
+.boton--contorno {
+  border: 2px solid var(--azul-700);
+  color: var(--azul-700);
+  background: transparent;
+}
+
+.boton--contorno:hover {
+  background: var(--azul-50);
+  transform: translateY(-2px);
+}
+
+.boton--claro {
+  border: 2px solid rgba(255, 255, 255, 0.55);
+  color: var(--blanco);
+  background: rgba(255, 255, 255, 0.06);
+  backdrop-filter: blur(4px);
+}
+
+.boton--claro:hover {
+  background: rgba(255, 255, 255, 0.16);
+  transform: translateY(-2px);
+}
+
+.boton--bloque {
+  width: 100%;
+}
+
+.boton[disabled],
+.boton:disabled {
+  opacity: 0.65;
+  cursor: not-allowed;
+  transform: none;
+}
+
+/* ---------- Tarjetas ---------- */
+.tarjeta {
+  background: var(--blanco);
+  border: 1px solid var(--borde);
+  border-radius: var(--radio-md);
+  padding: 1.75rem;
+  box-shadow: var(--sombra-sm);
+  transition: transform var(--transicion), box-shadow var(--transicion),
+    border-color var(--transicion);
+}
+
+.tarjeta:hover {
+  transform: translateY(-4px);
+  box-shadow: var(--sombra-md);
+  border-color: var(--azul-100);
+}
+
+.tarjeta__icono {
+  width: 52px;
+  height: 52px;
+  display: grid;
+  place-items: center;
+  border-radius: var(--radio-sm);
+  background: var(--azul-100);
+  color: var(--azul-700);
+  margin-bottom: 1.1rem;
+}
+
+.tarjeta__icono svg {
+  width: 26px;
+  height: 26px;
+}
+
+.tarjeta h3 {
+  font-size: 1.12rem;
+  margin-bottom: 0.5rem;
+}
+
+.tarjeta p {
+  color: var(--tinta-600);
+  font-size: 0.95rem;
+}
+
+/* ---------- Formularios ---------- */
+.campo {
+  display: flex;
+  flex-direction: column;
+  gap: 0.4rem;
+  margin-bottom: 1.15rem;
+}
+
+.campo label {
+  font-weight: 600;
+  font-size: 0.9rem;
+  color: var(--tinta-900);
+}
+
+.campo__control {
+  position: relative;
+  display: flex;
+  align-items: center;
+}
+
+.campo__control > svg {
+  position: absolute;
+  left: 0.95rem;
+  width: 19px;
+  height: 19px;
+  color: var(--tinta-400);
+  pointer-events: none;
+}
+
+.campo input,
+.campo select,
+.campo textarea {
+  width: 100%;
+  padding: 0.8rem 1rem;
+  border: 1.5px solid var(--borde);
+  border-radius: var(--radio-sm);
+  background: var(--blanco);
+  transition: border-color var(--transicion), box-shadow var(--transicion);
+}
+
+.campo__control input {
+  padding-left: 2.7rem;
+}
+
+.campo input:focus,
+.campo select:focus,
+.campo textarea:focus {
+  outline: none;
+  border-color: var(--azul-600);
+  box-shadow: 0 0 0 4px rgba(37, 99, 235, 0.12);
+}
+
+.campo input::placeholder,
+.campo textarea::placeholder {
+  color: var(--tinta-400);
+}
+
+.campo__ver {
+  position: absolute;
+  right: 0.6rem;
+  display: grid;
+  place-items: center;
+  padding: 0.4rem;
+  color: var(--tinta-400);
+  border-radius: 50%;
+  transition: color var(--transicion);
+}
+
+.campo__ver:hover {
+  color: var(--azul-700);
+}
+
+.campo__ver svg {
+  width: 20px;
+  height: 20px;
+}
+
+/* ---------- Alertas ---------- */
+.alerta {
+  display: flex;
+  align-items: flex-start;
+  gap: 0.6rem;
+  padding: 0.8rem 1rem;
+  border-radius: var(--radio-sm);
+  font-size: 0.9rem;
+  margin-bottom: 1.1rem;
+}
+
+.alerta svg {
+  width: 18px;
+  height: 18px;
+  flex-shrink: 0;
+  margin-top: 2px;
+}
+
+.alerta--error {
+  background: var(--rojo-50);
+  color: var(--rojo-600);
+  border: 1px solid #fecdca;
+}
+
+.alerta--exito {
+  background: var(--azul-50);
+  color: var(--azul-700);
+  border: 1px solid var(--azul-100);
+}
+
+/* ---------- Spinner ---------- */
+.spinner {
+  width: 18px;
+  height: 18px;
+  border: 2.5px solid rgba(255, 255, 255, 0.35);
+  border-top-color: var(--blanco);
+  border-radius: 50%;
+  animation: girar 0.7s linear infinite;
+}
+
+@keyframes girar {
+  to {
+    transform: rotate(360deg);
+  }
+}
+
+/* ============================================================
+   Layout de autenticación (login / registro) — compartido
+   ============================================================ */
+.auth {
+  min-height: 100dvh;
+  display: grid;
+  grid-template-columns: minmax(420px, 44%) 1fr;
+  background: var(--blanco);
+}
+
+.auth__panel {
+  position: relative;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  padding: clamp(2rem, 4vw, 3.5rem);
+  color: var(--blanco);
+  background:
+    radial-gradient(900px 500px at -10% -10%, rgba(56, 189, 248, 0.18), transparent 60%),
+    radial-gradient(700px 600px at 110% 110%, rgba(59, 130, 246, 0.35), transparent 60%),
+    linear-gradient(160deg, var(--azul-800), var(--azul-950));
+  overflow: hidden;
+}
+
+.auth__panel::after {
+  content: '';
+  position: absolute;
+  inset: 0;
+  background-image: radial-gradient(rgba(255, 255, 255, 0.07) 1px, transparent 1px);
+  background-size: 26px 26px;
+  pointer-events: none;
+}
+
+.auth__marca {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.7rem;
+  font-family: var(--fuente-titulos);
+  font-weight: 700;
+  font-size: 1.05rem;
+  z-index: 1;
+}
+
+.auth__marca svg {
+  width: 34px;
+  height: 34px;
+  color: var(--celeste-500);
+}
+
+.auth__mensaje {
+  z-index: 1;
+}
+
+.auth__mensaje h2 {
+  color: var(--blanco);
+  font-size: clamp(1.5rem, 2.6vw, 2.1rem);
+  margin-bottom: 0.9rem;
+}
+
+.auth__mensaje p {
+  color: rgba(255, 255, 255, 0.78);
+  max-width: 42ch;
+}
+
+.auth__cita {
+  z-index: 1;
+  border-left: 3px solid var(--celeste-500);
+  padding-left: 1rem;
+  font-size: 0.92rem;
+  color: rgba(255, 255, 255, 0.75);
+  font-style: italic;
+}
+
+.auth__contenido {
+  display: grid;
+  place-items: center;
+  padding: clamp(1.5rem, 4vw, 3rem);
+  overflow-y: auto;
+}
+
+.auth__caja {
+  width: min(440px, 100%);
+  padding-block: 1.5rem;
+}
+
+.auth__caja > h1 {
+  font-size: clamp(1.55rem, 3vw, 1.9rem);
+  margin-bottom: 0.4rem;
+}
+
+.auth__caja > .auth__sub {
+  color: var(--tinta-600);
+  margin-bottom: 1.8rem;
+}
+
+.auth__volver {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.4rem;
+  font-size: 0.9rem;
+  font-weight: 600;
+  color: var(--azul-700);
+  margin-bottom: 1.6rem;
+  transition: gap var(--transicion);
+}
+
+.auth__volver:hover {
+  gap: 0.6rem;
+}
+
+.auth__volver svg {
+  width: 17px;
+  height: 17px;
+}
+
+.auth__pie {
+  margin-top: 1.6rem;
+  text-align: center;
+  font-size: 0.94rem;
+  color: var(--tinta-600);
+}
+
+.auth__pie a {
+  color: var(--azul-700);
+  font-weight: 700;
+}
+
+.auth__pie a:hover {
+  text-decoration: underline;
+}
+
+@media (max-width: 900px) {
+  .auth {
+    grid-template-columns: 1fr;
+  }
+
+  .auth__panel {
+    display: none;
+  }
+}
+
+/* ============================================================
+   Sub-héroe (cabecera de páginas internas) — compartido
+   ============================================================ */
+.subheroe {
+  position: relative;
+  color: var(--blanco);
+  text-align: center;
+  padding-block: clamp(3rem, 7vw, 4.5rem);
+  background:
+    radial-gradient(800px 400px at 80% -30%, rgba(56, 189, 248, 0.2), transparent 60%),
+    linear-gradient(155deg, var(--azul-800), var(--azul-950));
+  overflow: hidden;
+}
+
+.subheroe::after {
+  content: '';
+  position: absolute;
+  inset: 0;
+  background-image: radial-gradient(rgba(255, 255, 255, 0.06) 1px, transparent 1px);
+  background-size: 28px 28px;
+  pointer-events: none;
+}
+
+.subheroe .contenedor {
+  position: relative;
+  z-index: 1;
+}
+
+.subheroe h1 {
+  color: var(--blanco);
+  font-size: clamp(1.9rem, 4.5vw, 2.8rem);
+  margin-block: 0.9rem 0.8rem;
+}
+
+.subheroe p {
+  color: rgba(255, 255, 255, 0.8);
+  max-width: 58ch;
+  margin-inline: auto;
+  font-size: 1.05rem;
+}
+
+/* ---------- Animación de entrada ---------- */
+@keyframes aparecer {
+  from {
+    opacity: 0;
+    transform: translateY(14px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+.aparecer {
+  animation: aparecer 0.55s ease both;
+}
+
+@media (prefers-reduced-motion: reduce) {
+  *,
+  *::before,
+  *::after {
+    animation-duration: 0.01ms !important;
+    transition-duration: 0.01ms !important;
+    scroll-behavior: auto !important;
+  }
+}

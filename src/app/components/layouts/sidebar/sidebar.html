@@ -1,0 +1,99 @@
+<!-- Telón de fondo -->
+<div
+  class="telon"
+  [class.telon--visible]="abierto()"
+  (click)="cerrar.emit()"
+  aria-hidden="true"
+></div>
+
+<!-- Menú lateral deslizante -->
+<aside
+  class="sidebar"
+  [class.sidebar--abierta]="abierto()"
+  aria-label="Menú del panel"
+>
+  <header class="sidebar__cabecera">
+    <div class="sidebar__marca">
+      <span aria-hidden="true">
+        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8"
+          stroke-linecap="round" stroke-linejoin="round">
+          <path d="M4 19.5A2.5 2.5 0 0 1 6.5 17H20" />
+          <path d="M6.5 2H20v20H6.5A2.5 2.5 0 0 1 4 19.5v-15A2.5 2.5 0 0 1 6.5 2z" />
+          <path d="M9 7h6M9 11h4" />
+        </svg>
+      </span>
+      <strong>Biblioteca UTEQ</strong>
+    </div>
+    <button
+      type="button"
+      class="sidebar__cerrar"
+      (click)="cerrar.emit()"
+      aria-label="Cerrar el menú"
+    >
+      <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2"
+        stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
+        <path d="M18 6L6 18M6 6l12 12" />
+      </svg>
+    </button>
+  </header>
+
+  <!-- Usuario -->
+  <div class="sidebar__usuario">
+    <span class="sidebar__avatar" aria-hidden="true">{{ iniciales() }}</span>
+    <div class="sidebar__datos">
+      <strong>{{ usuario()?.nombre ?? 'Invitado' }}</strong>
+      <small>{{ usuario()?.correo ?? '' }}</small>
+    </div>
+  </div>
+
+  <span class="sidebar__titulo">Menú</span>
+
+  <nav class="sidebar__navegacion">
+    <ul class="sidebar__lista">
+      <li>
+        <a
+          href="#"
+          class="sidebar__enlace sidebar__enlace--activo"
+          (click)="$event.preventDefault()"
+          aria-current="page"
+        >
+          <span class="sidebar__icono" aria-hidden="true">
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"
+              stroke-linecap="round" stroke-linejoin="round">
+              <path d="M4 19.5A2.5 2.5 0 0 1 6.5 17H20" />
+              <path d="M6.5 2H20v20H6.5A2.5 2.5 0 0 1 4 19.5v-15A2.5 2.5 0 0 1 6.5 2z" />
+              <path d="M9 7h6M9 11h4" />
+            </svg>
+          </span>
+          <span>Préstamos de libro</span>
+        </a>
+      </li>
+      <li>
+        <a href="#" class="sidebar__enlace" (click)="$event.preventDefault()">
+          <span class="sidebar__icono" aria-hidden="true">
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"
+              stroke-linecap="round" stroke-linejoin="round">
+              <path d="M20 21v-2a4 4 0 0 0-4-4H8a4 4 0 0 0-4 4v2" />
+              <circle cx="12" cy="7" r="4" />
+            </svg>
+          </span>
+          <span>Perfil</span>
+        </a>
+      </li>
+    </ul>
+  </nav>
+
+  <footer class="sidebar__pie">
+    <button type="button" class="sidebar__salir" (click)="cerrarSesion()">
+      <span class="sidebar__icono sidebar__icono--rojo" aria-hidden="true">
+        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"
+          stroke-linecap="round" stroke-linejoin="round">
+          <path d="M9 21H5a2 2 0 0 1-2-2V5a2 2 0 0 1 2-2h4" />
+          <path d="M16 17l5-5-5-5" />
+          <path d="M21 12H9" />
+        </svg>
+      </span>
+      <span>Cerrar sesión</span>
+    </button>
+  </footer>
+</aside>

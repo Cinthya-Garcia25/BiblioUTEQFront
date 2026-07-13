@@ -1,0 +1,159 @@
+<!-- ============ HERO ============ -->
+<section class="heroe">
+  <div class="contenedor heroe__interior">
+    <div class="heroe__texto aparecer">
+      <span class="etiqueta etiqueta--celeste">Universidad Tecnológica de Querétaro</span>
+      <h1>Tu biblioteca universitaria, <em>ahora digital</em></h1>
+      <p>
+        Consulta el catálogo, gestiona tus préstamos y reserva salas de estudio desde un solo
+        lugar. La Biblioteca UTEQ acompaña tu formación académica en cualquier momento y desde
+        cualquier dispositivo.
+      </p>
+      <div class="heroe__acciones">
+        <a routerLink="/registro" class="boton boton--celeste">
+          Comenzar ahora
+          <svg viewBox="0 0 24 24" width="18" height="18" fill="none" stroke="currentColor"
+            stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
+            <path d="M5 12h14M12 5l7 7-7 7" />
+          </svg>
+        </a>
+        <a routerLink="/sobre-nosotros" class="boton boton--claro">Conócenos</a>
+      </div>
+    </div>
+
+    <div class="heroe__visual aparecer" aria-hidden="true">
+      <div class="libro-flotante libro-flotante--uno">
+        <span class="libro-flotante__lomo"></span>
+        <strong>Ingeniería de Software</strong>
+        <small>Disponible · 4 ejemplares</small>
+      </div>
+      <div class="libro-flotante libro-flotante--dos">
+        <span class="libro-flotante__lomo libro-flotante__lomo--celeste"></span>
+        <strong>Redes y Telecomunicaciones</strong>
+        <small>Reservado para ti</small>
+      </div>
+      <div class="libro-flotante libro-flotante--tres">
+        <span class="libro-flotante__lomo libro-flotante__lomo--claro"></span>
+        <strong>Cálculo Diferencial</strong>
+        <small>Entrega: 18 de julio</small>
+      </div>
+    </div>
+  </div>
+
+  <div class="contenedor heroe__estadisticas">
+    @for (dato of estadisticas; track dato.texto) {
+      <div class="heroe__dato">
+        <strong>{{ dato.valor }}</strong>
+        <span>{{ dato.texto }}</span>
+      </div>
+    }
+  </div>
+</section>
+
+<!-- ============ SERVICIOS ============ -->
+<section class="seccion" id="servicios">
+  <div class="contenedor">
+    <header class="seccion__cabecera">
+      <span class="etiqueta">Nuestros servicios</span>
+      <h2>Todo lo que la biblioteca ofrece, en un solo lugar</h2>
+      <p>
+        Diseñamos esta plataforma para que estudiantes y docentes de la UTEQ aprovechen al
+        máximo los recursos de la biblioteca.
+      </p>
+    </header>
+
+    <div class="servicios">
+      @for (servicio of servicios; track servicio.titulo) {
+        <article class="tarjeta">
+          <div class="tarjeta__icono">
+            @switch (servicio.icono) {
+              @case ('libro') {
+                <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"
+                  stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
+                  <path d="M4 19.5A2.5 2.5 0 0 1 6.5 17H20" />
+                  <path d="M6.5 2H20v20H6.5A2.5 2.5 0 0 1 4 19.5v-15A2.5 2.5 0 0 1 6.5 2z" />
+                </svg>
+              }
+              @case ('reloj') {
+                <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"
+                  stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
+                  <circle cx="12" cy="12" r="10" />
+                  <path d="M12 6v6l4 2" />
+                </svg>
+              }
+              @case ('marcador') {
+                <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"
+                  stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
+                  <path d="M19 21l-7-5-7 5V5a2 2 0 0 1 2-2h10a2 2 0 0 1 2 2z" />
+                </svg>
+              }
+              @case ('sala') {
+                <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"
+                  stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
+                  <path d="M17 21v-2a4 4 0 0 0-4-4H5a4 4 0 0 0-4 4v2" />
+                  <circle cx="9" cy="7" r="4" />
+                  <path d="M23 21v-2a4 4 0 0 0-3-3.87M16 3.13a4 4 0 0 1 0 7.75" />
+                </svg>
+              }
+              @case ('nube') {
+                <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"
+                  stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
+                  <path d="M18 10h-1.26A8 8 0 1 0 9 20h9a5 5 0 0 0 0-10z" />
+                </svg>
+              }
+              @case ('campana') {
+                <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"
+                  stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
+                  <path d="M18 8A6 6 0 0 0 6 8c0 7-3 9-3 9h18s-3-2-3-9" />
+                  <path d="M13.73 21a2 2 0 0 1-3.46 0" />
+                </svg>
+              }
+            }
+          </div>
+          <h3>{{ servicio.titulo }}</h3>
+          <p>{{ servicio.descripcion }}</p>
+        </article>
+      }
+    </div>
+  </div>
+</section>
+
+<!-- ============ CÓMO FUNCIONA ============ -->
+<section class="seccion seccion--crema">
+  <div class="contenedor">
+    <header class="seccion__cabecera">
+      <span class="etiqueta">Cómo funciona</span>
+      <h2>Empieza a usar la biblioteca en tres pasos</h2>
+      <p>Sin trámites complicados: tu cuenta institucional es la llave de acceso.</p>
+    </header>
+
+    <div class="pasos">
+      @for (paso of pasos; track paso.numero) {
+        <article class="paso">
+          <span class="paso__numero">{{ paso.numero }}</span>
+          <h3>{{ paso.titulo }}</h3>
+          <p>{{ paso.descripcion }}</p>
+        </article>
+      }
+    </div>
+  </div>
+</section>
+
+<!-- ============ CTA FINAL ============ -->
+<section class="seccion">
+  <div class="contenedor">
+    <div class="cta">
+      <div class="cta__texto">
+        <h2>¿Listo para aprovechar tu biblioteca?</h2>
+        <p>
+          Únete a la comunidad de lectores de la UTEQ y lleva el control de tus préstamos,
+          reservas y recursos digitales.
+        </p>
+      </div>
+      <div class="cta__acciones">
+        <a routerLink="/registro" class="boton boton--celeste">Crear mi cuenta</a>
+        <a routerLink="/login" class="boton boton--claro">Ya tengo cuenta</a>
+      </div>
+    </div>
+  </div>
+</section>

@@ -1,0 +1,77 @@
+.registro__fila {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 1rem;
+}
+
+/* El campo de contraseña con botón de ver no usa icono a la izquierda */
+.campo__control--simple input {
+  padding-left: 1rem;
+  padding-right: 2.8rem;
+}
+
+/* ---------- Checkbox de políticas ---------- */
+.registro__politicas {
+  display: flex;
+  align-items: flex-start;
+  gap: 0.65rem;
+  margin-bottom: 1.4rem;
+  font-size: 0.9rem;
+  color: var(--tinta-600);
+  cursor: pointer;
+}
+
+.registro__politicas input {
+  width: 17px;
+  height: 17px;
+  margin-top: 3px;
+  flex-shrink: 0;
+  accent-color: var(--azul-700);
+  cursor: pointer;
+}
+
+.registro__politicas a {
+  color: var(--azul-700);
+  font-weight: 700;
+  text-decoration: underline;
+}
+
+/* ---------- Estado de éxito ---------- */
+.exito {
+  text-align: center;
+  padding-block: 1.5rem;
+}
+
+.exito__icono {
+  display: grid;
+  place-items: center;
+  width: 84px;
+  height: 84px;
+  margin: 0 auto 1.4rem;
+  border-radius: 50%;
+  color: var(--azul-700);
+  background: var(--azul-100);
+  border: 3px solid var(--azul-600);
+}
+
+.exito__icono svg {
+  width: 40px;
+  height: 40px;
+}
+
+.exito h1 {
+  font-size: 1.6rem;
+  margin-bottom: 0.7rem;
+}
+
+.exito p {
+  color: var(--tinta-600);
+  margin-bottom: 1.8rem;
+}
+
+/* ---------- Responsivo ---------- */
+@media (max-width: 560px) {
+  .registro__fila {
+    grid-template-columns: 1fr;
+  }
+}
