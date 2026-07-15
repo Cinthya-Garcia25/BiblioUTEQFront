@@ -1,10 +1,10 @@
 import { Component, computed, inject, input, output } from '@angular/core';
-import { Router } from '@angular/router';
+import { Router, RouterLink, RouterLinkActive } from '@angular/router';
 import { Auth } from '../../../services/auth';
 
 @Component({
   selector: 'app-sidebar',
-  imports: [],
+  imports: [RouterLink, RouterLinkActive],
   templateUrl: './sidebar.html',
   styleUrl: './sidebar.scss',
 })
