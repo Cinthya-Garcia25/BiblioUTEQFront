@@ -16,6 +16,7 @@ export class Sidebar {
   readonly cerrar = output<void>();
 
   protected readonly usuario = this.auth.usuario;
+  protected readonly esAdministrador = computed(() => this.auth.tieneRol('ADMINISTRADOR'));
 
   protected readonly iniciales = computed(() => {
     const nombre = this.usuario()?.nombre ?? 'Invitado';

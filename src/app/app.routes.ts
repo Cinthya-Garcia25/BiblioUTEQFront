@@ -1,5 +1,6 @@
 import { Routes } from '@angular/router';
 import { authGuard } from './services/auth-guard';
+import { adminGuard } from './services/admin-guard';
 
 export const routes: Routes = [
   {
@@ -26,6 +27,12 @@ export const routes: Routes = [
         path: 'politicas',
         loadComponent: () => import('./Landing/politicas/politicas').then((m) => m.Politicas),
         title: 'Biblioteca UTEQ | Políticas de Uso',
+      },
+      {
+        path: 'admin/usuarios',
+        canActivate: [adminGuard],
+        loadComponent: () => import('./features/admin/usuarios/usuarios').then((m) => m.UsuariosAdminComponent),
+        title: 'Biblioteca UTEQ | Gestion de usuarios',
       },
       {
         path: 'admin/libros',

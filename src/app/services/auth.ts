@@ -1,7 +1,7 @@
 import { isPlatformBrowser } from '@angular/common';
 import { Injectable, PLATFORM_ID, computed, inject, signal } from '@angular/core';
 
-export interface Usuario { nombre: string; correo: string; }
+export interface Usuario { nombre: string; correo: string; roles: string[]; }
 interface TokenResponse { access_token: string; refresh_token?: string; id_token?: string; expires_in: number; }
 
 @Injectable({ providedIn: 'root' })
@@ -52,8 +52,12 @@ export class Auth {
     sessionStorage.removeItem('oauth_state');
     sessionStorage.setItem('oauth_tokens', JSON.stringify(tokens));
     const claims = this.decodificarJwt(tokens.id_token ?? tokens.access_token);
+    const accessClaims = this.decodificarJwt(tokens.access_token);
     const correo = String(claims['email'] ?? claims['sub'] ?? 'usuario');
-    const usuario = { nombre: String(claims['name'] ?? this.nombreDesdeCorreo(correo)), correo };
+    const roles = Array.isArray(accessClaims['roles'])
+      ? accessClaims['roles'].map(String)
+      : [];
+    const usuario = { nombre: String(claims['name'] ?? this.nombreDesdeCorreo(correo)), correo, roles };
     sessionStorage.setItem('oauth_usuario', JSON.stringify(usuario));
     this._usuario.set(usuario);
   }
@@ -107,6 +111,10 @@ export class Auth {
       this._usuario.set(null);
       return false;
     }
+  }
+
+  tieneRol(rol: string): boolean {
+    return this.tieneTokenValido() && (this._usuario()?.roles ?? []).includes(rol);
   }
 
   private leerUsuario(): Usuario | null {

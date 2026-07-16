@@ -1,0 +1,44 @@
+<main class="usuarios-admin">
+  <header class="usuarios-admin__header">
+    <div><p>Panel de administracion</p><h1>Gestion de usuarios</h1></div>
+    @if (!formularioVisible()) { <button class="primario" type="button" (click)="nuevo()">+ Nuevo usuario</button> }
+  </header>
+
+  @if (error()) { <div class="mensaje mensaje--error" role="alert">{{ error() }}</div> }
+  @if (exito()) { <div class="mensaje mensaje--exito" role="status">{{ exito() }}</div> }
+
+  @if (formularioVisible()) {
+    <form class="formulario" (ngSubmit)="guardar()">
+      <h2>{{ editando() ? 'Editar usuario' : 'Crear usuario' }}</h2>
+      <label>Nombre completo<input name="nombre" [(ngModel)]="formulario.nombreCompleto" maxlength="150" required /></label>
+      <label>Correo electronico<input name="email" type="email" [(ngModel)]="formulario.email" maxlength="150" required /></label>
+      <label>Rol<select name="rol" [(ngModel)]="formulario.rol">
+        @for (rol of roles; track rol) { <option [value]="rol">{{ rol }}</option> }
+      </select></label>
+      <label>Contrasena {{ editando() ? '(dejar vacia para conservar)' : '' }}
+        <input name="password" type="password" [(ngModel)]="formulario.password" minlength="8" [required]="!editando()" />
+      </label>
+      <div class="acciones">
+        <button class="primario" type="submit" [disabled]="guardando()">{{ guardando() ? 'Guardando...' : 'Guardar' }}</button>
+        <button class="secundario" type="button" (click)="cancelar()">Cancelar</button>
+      </div>
+    </form>
+  } @else if (cargando()) {
+    <p>Cargando usuarios...</p>
+  } @else {
+    <div class="tabla-wrap"><table>
+      <thead><tr><th>Nombre</th><th>Correo</th><th>Rol</th><th>Registro</th><th>Acciones</th></tr></thead>
+      <tbody>
+        @for (usuario of usuarios(); track usuario.id) {
+          <tr>
+            <td>{{ usuario.nombreCompleto }}</td><td>{{ usuario.email }}</td>
+            <td><span class="rol">{{ usuario.rol }}</span></td>
+            <td>{{ usuario.fechaRegistro ? (usuario.fechaRegistro | slice:0:10) : '—' }}</td>
+            <td class="acciones"><button class="editar" type="button" (click)="editar(usuario)">Editar</button>
+              <button class="eliminar" type="button" (click)="eliminar(usuario)">Desactivar</button></td>
+          </tr>
+        } @empty { <tr><td colspan="5">No hay usuarios activos.</td></tr> }
+      </tbody>
+    </table></div>
+  }
+</main>
