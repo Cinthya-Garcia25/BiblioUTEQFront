@@ -21,7 +21,7 @@ export interface UsuarioAdminRequest {
 @Injectable({ providedIn: 'root' })
 export class UsuariosAdminService {
   private readonly http = inject(HttpClient);
-  private readonly url = 'http://localhost:8080/api/v1/users';
+  private readonly url = 'http://localhost:8080/api/users';
   listar(): Observable<UsuarioAdmin[]> { return this.http.get<UsuarioAdmin[]>(this.url); }
   crear(request: UsuarioAdminRequest): Observable<UsuarioAdmin> {
     return this.http.post<UsuarioAdmin>(this.url, request);
@@ -29,5 +29,7 @@ export class UsuariosAdminService {
   actualizar(id: string, request: UsuarioAdminRequest): Observable<UsuarioAdmin> {
     return this.http.put<UsuarioAdmin>(`${this.url}/${id}`, request);
   }
-  eliminar(id: string): Observable<void> { return this.http.delete<void>(`${this.url}/${id}`); }
+  cambiarEstado(id: string, activo: boolean): Observable<UsuarioAdmin> {
+    return this.http.patch<UsuarioAdmin>(`${this.url}/${id}/status`, { activo });
+  }
 }
