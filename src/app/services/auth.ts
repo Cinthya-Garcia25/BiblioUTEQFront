@@ -7,7 +7,7 @@ interface TokenResponse { access_token: string; refresh_token?: string; id_token
 @Injectable({ providedIn: 'root' })
 export class Auth {
   private readonly platformId = inject(PLATFORM_ID);
-  private readonly gateway = 'http://localhost:8080';
+  private readonly gateway = 'http://localhost:8088';
   private readonly clientId = 'bibliouteq-spa';
   private readonly redirectUri = 'http://localhost:4200/auth/callback';
   private readonly _usuario = signal<Usuario | null>(this.leerUsuario());
@@ -15,14 +15,15 @@ export class Auth {
   readonly usuario = this._usuario.asReadonly();
   readonly estaAutenticado = computed(() => this._usuario() !== null);
 
-  async iniciarSesion(returnUrl = '/home'): Promise<void> {
+  async iniciarSesion(returnUrl?: string): Promise<void> {
     if (!this.esNavegador()) return;
     const verifier = this.base64Url(crypto.getRandomValues(new Uint8Array(64)));
     const state = this.base64Url(crypto.getRandomValues(new Uint8Array(32)));
     const digest = await crypto.subtle.digest('SHA-256', new TextEncoder().encode(verifier));
     sessionStorage.setItem('oauth_code_verifier', verifier);
     sessionStorage.setItem('oauth_state', state);
-    sessionStorage.setItem('oauth_return_url', returnUrl.startsWith('/') ? returnUrl : '/home');
+    // Vacio = sin destino explicito; el callback decidira la vista segun el rol.
+    sessionStorage.setItem('oauth_return_url', returnUrl?.startsWith('/') ? returnUrl : '');
     const params = new URLSearchParams({
       response_type: 'code', client_id: this.clientId, redirect_uri: this.redirectUri,
       scope: 'openid profile read write', state,
